@@ -1,14 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-html,body {
-  font-family: 'Poppins', sans-serif;
+/* Vibrant gradient background */
+html, body {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
   margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
-  color: #333;
-   height: 100%;
-   display: flex;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
   flex-direction: column;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper > header,
+.page-wrapper > section,
+.page-wrapper > footer {
+  flex-shrink: 0;
+}
+
+.page-wrapper > section {
+  flex: 1;
 }
 
 
@@ -22,38 +38,43 @@ main {
   flex: 1;
 }
 footer {
+  width: 100%;
   text-align: center;
-  padding: 15px;
-  background: #222;
-  color: white;
-  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+  background: #3a7bd5;
+  color: #fff;
+  margin-top: 2em;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 2px 12px rgba(58,123,213,0.12);
+  /* Remove margin-top if you want it flush to the bottom */
 }
+  
+
 nav ul {
+  display: flex;
+  justify-content: center;
   list-style: none;
-  text-align: center;
+  background: #3a7bd5;
+  padding: 0.5em 0;
   margin: 0;
-  padding: 0;
 }
 
 nav ul li {
-  display: inline-block;
-  margin: 0 20px;
+  margin: 0 1.5em;
 }
 
 nav ul li a {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 8px 15px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  transition: color 0.2s;
 }
 
 nav ul li a:hover {
-  background: white;
-  color: #004466;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  color: #f7b731;
 }
 
 /* Card-style Sections */
@@ -143,10 +164,200 @@ button {
   font-size: 1rem;
   margin-top: 15px;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px #66a6ff55;
 }
 
 button:hover {
   background: white;
   color: #004466;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 18px #66a6ff88;
+}
+
+.resume {
+  max-width: 600px;
+  margin: 2em auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(58,123,213,0.08);
+  padding: 2em;
+}
+
+.selector-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+.selector {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  background: #f0f4fa;
+  border-radius: 24px;
+  padding: 0.5em 1em;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(58,123,213,0.05);
+}
+
+.selector:hover {
+  background: #e3eafc;
+  box-shadow: 0 4px 16px #66a6ff33;
+}
+
+.selector input[type="radio"] {
+  display: none;
+}
+
+.custom-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3a7bd5;
+  border-radius: 50%;
+  margin-right: 0.7em;
+  background: #fff;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.selector input[type="radio"]:checked + .custom-radio {
+  border-color: #f7b731;
+  box-shadow: 0 0 0 4px #f7b73133;
+}
+
+.selector input[type="radio"]:checked + .custom-radio::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #f7b731;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+.section-content {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.contact.card {
+  max-width: 600px;
+  margin: 2em auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(58,123,213,0.10);
+  padding: 2em 2.5em;
+  animation: fadeIn 0.7s;
+}
+
+.contact-title {
+ text-align: center;
+  color: #3a7bd5;
+  margin-bottom: 1.5em;
+  font-size: 2em;
+  letter-spacing: 1px;
+  margin-top: 0; /* Remove space before heading */
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2em;
+}
+
+@media (max-width: 700px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-item {
+  display: flex;
+  align-items: center; /* changed from flex-start to center */
+  font-size: 1.1em;
+  background: #f0f4fa;
+  border-radius: 10px;
+  padding: 0.7em 1em;
+  box-shadow: 0 2px 8px rgba(58,123,213,0.05);
+  transition: background 0.2s;
+  gap: 0.3em; /* reduced gap for less space */
+  flex-wrap: wrap;
+  flex-direction: row;
+  word-break: break-word;
+}
+
+.info-item .icon {
+  flex-shrink: 0;
+  font-size: 1.5em;
+  margin-right: 0.3em; /* less space after emoji */
+  margin-top: 2px;
+}
+
+.info-item strong {
+  min-width: unset; /* remove fixed width for heading */
+  display: inline-block;
+  text-align: left;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .info-item strong {
+    min-width: unset;
+    text-align: left;
+    margin-right: 4px;
+  }
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2em;
+  }
+}
+
+/* Animate links */
+nav ul li a, .info-item a {
+  transition: color 0.2s, text-shadow 0.2s;
+}
+nav ul li a:hover, .info-item a:hover {
+  color: #f7b731;
+  text-shadow: 0 2px 8px #f7b73144;
+}
+
+/* Navigation and footer shadow */
+header, footer {
+  box-shadow: 0 2px 12px rgba(58,123,213,0.12);
+}
+
+/* Section titles */
+h1, h2, .contact-title {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Button glow effect */
+button {
+  box-shadow: 0 2px 10px #66a6ff55;
+}
+button:hover {
+  box-shadow: 0 4px 18px #66a6ff88;
+}
+
+/* Selector-group hover effect */
+.selector {
+  box-shadow: 0 2px 8px #66a6ff22;
+}
+
+/* Reduce space above the Github info-item in biodata */ biodata */
+.info-item:nth-child(7) {
+  margin-top: 0;
 }
